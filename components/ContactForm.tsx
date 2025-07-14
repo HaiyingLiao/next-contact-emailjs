@@ -3,6 +3,7 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -34,8 +35,18 @@ export default function ContactForm() {
   });
 
   // 2. Submit handler
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      await emailjs.send(
+      process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+      values,
+      process.env.NEXT_PUBLIC_EMAILJS_API_KEY!
+      );
+      form.reset();
+    } catch (error) {
+      console.error("EmailJS error:", error);
+    } 
   };
 
   return (
