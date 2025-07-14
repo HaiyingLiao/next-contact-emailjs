@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Contact Form with Next.js 15 + EmailJS
 
-## Getting Started
+This project is a simple, production-ready contact form built using **Next.js 15**, **TypeScript**, **Tailwind CSS**, **shadcn/ui**, **React Hook Form**, **Zod**, and **EmailJS**.
 
-First, run the development server:
+Users can submit their name, email, and message, which will be validated and sent directly to your email inbox via EmailJS — no backend required.
+
+<br>
+
+##  Features
+
+- ✅ Built with Next.js 15 and App Router
+- 💅 Styled using Tailwind CSS and shadcn/ui components
+- 🎯 Form validation powered by Zod and React Hook Form
+- 📧 Sends submissions via EmailJS API
+- 💡 Fully type-safe and client-only
+
+<br>
+
+##  Tech Stack
+
+- [Next.js 15](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [shadcn/ui](https://ui.shadcn.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zod](https://zod.dev/)
+- [EmailJS](https://www.emailjs.com/)
+
+<br>
+
+##  Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/HaiyingLiao/next-contact-emailjs.git
+cd next-contact-emailjs
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure EmailJS
+
+Create a `.env.local` file in the root:
+
+```env
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_API_KEY=your_public_key
+```
+
+> Replace the values with your actual EmailJS credentials.
+
+> **Note:** Restart your dev server after updating environment variables.
+
+### 4. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then visit:  
+[http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+##  How It Works
 
-## Learn More
+- The form captures the user’s name, email, and message.
+- Validation is handled with Zod and React Hook Form.
+- On submission, data is sent to your email using EmailJS.
+- The form resets after a successful submission.
 
-To learn more about Next.js, take a look at the following resources:
+<br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is licensed under the [MIT License](LICENSE).
 
-## Deploy on Vercel
+<br>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## ⭐ Support & Contributions
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you found this helpful, feel free to ⭐ the repo or contribute!
