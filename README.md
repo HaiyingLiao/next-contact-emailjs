@@ -3,6 +3,7 @@
 This project is a simple, production-ready contact form built using **Next.js 15**, **TypeScript**, **Tailwind CSS**, **shadcn/ui**, **React Hook Form**, **Zod**, and **EmailJS**.
 
 Users can submit their name, email, and message, which will be validated and sent directly to your email inbox via EmailJS — no backend required.
+<img width="1710" height="1107" alt="Screenshot 2025-07-14 at 21 27 29" src="https://github.com/user-attachments/assets/2e8279e8-c144-4d18-b589-3064f0a73380" />
 
 <br>
 
