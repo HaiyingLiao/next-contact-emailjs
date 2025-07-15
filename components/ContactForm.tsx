@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -23,7 +24,20 @@ const formSchema = z.object({
   message: z.string().min(10, { message: "Message must be at least 10 characters" }),
 });
 
+// Message types
+type MessageType = "success" | "error";
+
+interface ResultMessage {
+  type: MessageType;
+  text: string;
+}
+
 export default function ContactForm() {
+  const [loading, setLoading] = useState(false);
+  const [resultMessage, setResultMessage] = useState<ResultMessage | null>(
+    null
+  );
+
   // 1. Initialise the form
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema), // connect zod validation
@@ -36,6 +50,9 @@ export default function ContactForm() {
 
   // 2. Submit handler
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    setLoading(true);
+    setResultMessage(null);
+
     try {
       await emailjs.send(
       process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
@@ -43,10 +60,20 @@ export default function ContactForm() {
       values,
       process.env.NEXT_PUBLIC_EMAILJS_API_KEY!
       );
+      setResultMessage({
+        type: "success",
+        text: "Thank you! Your message has been sent successfully.",
+      });
       form.reset();
     } catch (error) {
       console.error("EmailJS error:", error);
-    } 
+      setResultMessage({
+        type: "error",
+        text: "Failed to send message. Please try again or contact us directly.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -109,8 +136,15 @@ export default function ContactForm() {
           )}
         />
         <Button type="submit" className="w-full cursor-pointer">
-          Submit
+        {loading ? "Sending..." : "Send Message"}
         </Button>
+
+        {resultMessage && (
+          <p className={`text-sm font-medium ${resultMessage.type === "success" ? "text-green-600" : "text-red-600"}`}
+     role="alert"
+    >
+     {resultMessage.text}
+    </p>)}
       </form>
     </Form>
   );
