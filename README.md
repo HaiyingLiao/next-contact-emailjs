@@ -9,11 +9,11 @@ Users can submit their name, email, and message, which will be validated and sen
 
 ##  Features
 
-- ✅ Built with Next.js 15 and App Router
-- 💅 Styled using Tailwind CSS and shadcn/ui components
-- 🎯 Form validation powered by Zod and React Hook Form
-- 📧 Sends submissions via EmailJS API
-- 💡 Fully type-safe and client-only
+-  Built with Next.js 15 and App Router
+-  Styled using Tailwind CSS and shadcn/ui components
+-  Form validation powered by Zod and React Hook Form
+-  Sends submissions via EmailJS API
+-  Fully type-safe and client-only
 
 <br>
 
